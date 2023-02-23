@@ -1,0 +1,52 @@
+CREATE DATABASE `друзья человека`;
+USE `друзья человека`;
+CREATE TABLE CasualAnimal (
+	id INT NOT NULL AUTO_INCREMENT,
+	birthDay DATE NOT NULL,
+	NAME TEXT NOT NULL,
+PRIMARY KEY ( id ));
+CREATE TABLE Commands (
+	id INT NOT NULL AUTO_INCREMENT,
+	command TEXT NOT NULL,
+PRIMARY KEY ( id ));
+CREATE TABLE AnimalCommand ( Animal_id INT NOT NULL, Command_id INT NOT NULL );
+CREATE TABLE Pet (
+	id INT NOT NULL AUTO_INCREMENT,
+	CasualAnimal_id INT NOT NULL,
+PRIMARY KEY ( id ));
+ALTER TABLE Pet ADD CONSTRAINT CasualAnimal_Pet_FK_1 FOREIGN KEY ( CasualAnimal_id ) REFERENCES CasualAnimal ( id );
+CREATE TABLE Dog (
+	id INT NOT NULL AUTO_INCREMENT,
+	Pet_id INT NOT NULL,
+PRIMARY KEY ( id ));
+ALTER TABLE Dog ADD CONSTRAINT Pet_Dog_FK_1 FOREIGN KEY ( Pet_id ) REFERENCES Pet ( id );
+CREATE TABLE Cat (
+	id INT NOT NULL AUTO_INCREMENT,
+	Pet_id INT NOT NULL,
+PRIMARY KEY ( id ));
+ALTER TABLE Cat ADD CONSTRAINT Pet_Cat_FK_1 FOREIGN KEY ( Pet_id ) REFERENCES Pet ( id );
+CREATE TABLE Hamster (
+	id INT NOT NULL AUTO_INCREMENT,
+	Pet_id INT NOT NULL,
+PRIMARY KEY ( id ));
+ALTER TABLE Hamster ADD CONSTRAINT Pet_Hamster_FK_1 FOREIGN KEY ( Pet_id ) REFERENCES Pet ( id );
+CREATE TABLE BurdenAnimal (
+	id INT NOT NULL AUTO_INCREMENT,
+	CasualAnimal_id INT NOT NULL,
+PRIMARY KEY ( id ));
+ALTER TABLE BurdenAnimal ADD CONSTRAINT CasualAnimal_BurdenAnimal_FK_1 FOREIGN KEY ( CasualAnimal_id ) REFERENCES CasualAnimal ( id );
+CREATE TABLE Horse (
+	id INT NOT NULL AUTO_INCREMENT,
+	BurdenAnimal_id INT NOT NULL,
+PRIMARY KEY ( id ));
+ALTER TABLE Horse ADD CONSTRAINT BurdenAnimal_Horse_FK_1 FOREIGN KEY ( BurdenAnimal_id ) REFERENCES BurdenAnimal ( id );
+CREATE TABLE Camel (
+	id INT NOT NULL AUTO_INCREMENT,
+	BurdenAnimal_id INT NOT NULL,
+PRIMARY KEY ( id ));
+ALTER TABLE Camel ADD CONSTRAINT BurdenAnimal_Camel_FK_1 FOREIGN KEY ( BurdenAnimal_id ) REFERENCES BurdenAnimal ( id );
+CREATE TABLE Donkey (
+	id INT NOT NULL AUTO_INCREMENT,
+	BurdenAnimal_id INT NOT NULL,
+PRIMARY KEY ( id ));
+ALTER TABLE Donkey ADD CONSTRAINT BurdenAnimal_Donkey_FK_1 FOREIGN KEY ( BurdenAnimal_id ) REFERENCES BurdenAnimal ( id );

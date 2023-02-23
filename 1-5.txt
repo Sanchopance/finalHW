@@ -1,0 +1,35 @@
+*************1**************
+user@ub:~/lasthmwrk$ cat > 'Домашние животные'
+собачки
+кошки
+хомячки
+user@ub:~/lasthmwrk$
+user@ub:~/lasthmwrk$ cat > 'Вьючные животные'
+лошадь
+верблюд
+осел
+user@ub:~/lasthmwrk$
+user@ub:~/lasthmwrk$ cat 'Домашние животные' 'Вьючные животные' > 'All'
+user@ub:~/lasthmwrk$ cat All
+собачки
+кошки
+хомячки
+лошадь
+верблюд
+осел
+user@ub:~/lasthmwrk$ mv All 'Друзья человека'
+
+*************2**************
+user@ub:~/lasthmwrk$ mkdir temp
+user@ub:~/lasthmwrk$ mv 'Друзья человека' ./temp
+
+*************3**************
+user@ub:~/lasthmwrk$ wget https://dev.mysql.com/get/mysql-apt-config_0.8.24-1_all.deb
+user@ub:~/lasthmwrk$ sudo dpkg -i mysql-apt-config_0.8.24-1_all.deb
+user@ub:~/lasthmwrk$ sudo apt-get update
+user@ub:~/lasthmwrk$ sudo apt-get install mysql-community-server
+
+*************4**************
+user@ub:~/lasthmwrk$ wget https://www.igniterealtime.org/downloadServlet?filename=spark/spark_3_0_1.deb
+user@ub:~/lasthmwrk$ sudo dpkg -i spark_3_0_1.deb
+user@ub:~/lasthmwrk$ sudo dpkg -r spark

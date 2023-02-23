@@ -1,0 +1,8 @@
+CREATE TABLE YoungAnimal (id INT NOT NULL AUTO_INCREMENT , Animal_id INT NOT NULL , Age TEXT NOT NULL , PRIMARY KEY (id));
+ALTER TABLE YoungAnimal ADD CONSTRAINT CasualAnimal_YoungAnimal_FK_1 FOREIGN KEY (Animal_id) REFERENCES CasualAnimal(id);
+
+INSERT INTO YoungAnimal(Animal_id, Age)
+SELECT ca.id, CONCAT(
+CONVERT(DATEDIFF(CURRENT_DATE(), ca.birthDay) DIV 365, CHAR), ' years ', CONVERT(DATEDIFF(CURRENT_DATE(), ca.birthDay) % 365 DIV 30, CHAR), ' months ') AS age
+FROM CasualAnimal AS ca
+WHERE ca.birthDay >= DATE_SUB(CURRENT_DATE(), INTERVAL 3 YEAR) AND ca.birthDay <= DATE_SUB(CURRENT_DATE(), INTERVAL 1 YEAR);
